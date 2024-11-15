@@ -1,6 +1,35 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
+void print_stack(int *stack, int count) {
+    int i = 0;
+    while (i < count) {
+        printf("%d\n", stack[i]);
+        i++;
+    }
+}
+
+int	ft_count_words(char *ptr, char delimiter)
+{
+	int	total_words;
+	int	i;
+
+	i = 0;
+	total_words = 0;
+	while (ptr[i])
+	{
+		if (ptr[i] != delimiter)
+		{
+			total_words++;
+			while (ptr[i] && ptr[i] != delimiter)
+				i++;
+		}
+		else
+			i++;
+	}
+	return (total_words);
+}
+
 int ft_strcmp(const char *s1, const char *s2) {
     if (!s1 || !s2)
         return 0;
@@ -11,12 +40,15 @@ int ft_strcmp(const char *s1, const char *s2) {
     return (unsigned char)*s1 - (unsigned char)*s2;
 }
 
-void print_stack(int *stack, int count) {
+int is_alredy_ordered(int *stack, int count) {
     int i = 0;
-    while (i < count) {
-        printf("%d\n", stack[i]);
+    while (i < count - 1) {
+        if (stack[i] > stack[i + 1]) {
+            return 1;
+        }
         i++;
     }
+    return 0;
 }
 int has_consecutive_spaces(char *str) {
     while (*str) {
@@ -91,78 +123,36 @@ int is_alredy_in_stack(int *stack, int count, int num) {
     return 0;
 }
 
-void free_stack(int *stack_a) {
-    free(stack_a);
+void free_allocated_memory(char **splited,int *stack,int count) {
+    int i = 0;
+    while (i < count) {
+        free(splited[i]);
+        i++;
+    }
+    free(splited);
+    free(stack);
 }
 
 int main(int argc, char **argvs) {
-    int *stack_a;
-    char **args;
-    int count = argc - 1;
-
     if (argc < 2) {
-        ft_putstr_fd("Error: not enough arguments\n", 2);
+        printf("Error\n");
         return 1;
     }
-
-    if (argc == 2) {
-        if (has_consecutive_spaces(argvs[1])) {
-            ft_putstr_fd("Error: consecutive spaces found\n", 2);
+    int i = 1;
+    while (argvs[i]) {
+        int splited_count = ft_count_words(argvs[i], ' ');
+        char **splited = ft_split(argvs[i], ' ');
+        if (!splited)
             return 1;
-        }
-        args = ft_split(argvs[1], ' ');
-        if (!args) {
-            ft_putstr_fd("Error: memory allocation failed\n", 2);
-            return 1;
-        }
-        count = 0;
-        while (args[count])
-            count++;
-    } else {
-        args = argvs + 1;
-    }
-
-    stack_a = malloc(count * sizeof(int));
-    if (!stack_a) {
-        ft_putstr_fd("Error: memory allocation failed\n", 2);
-        if (argc == 2) free(args);
-        return 1;
-    }
-
-    if (contains_repeated(args)) {
-        ft_putstr_fd("Error: duplicate arguments found\n", 2);
-        free_stack(stack_a);
-        if (argc == 2) free(args);
-        return 1;
-    }
-
-    int i = 0;
-    while (i < count) {
-        if (!is_valid_number(args[i])) {
-            ft_putstr_fd("Error: invalid argument\n", 2);
-            free_stack(stack_a);
-            if (argc == 2) free(args);
-            return 1;
-        }
-        if (is_alredy_in_stack(stack_a, i, ft_atoi(args[i]))) {
-            ft_putstr_fd("Error: duplicate arguments found\n", 2);
-            free_stack(stack_a);
-            if (argc == 2) free(args);
-            return 1;
-        }
-        stack_a[i] = ft_atoi(args[i]);
-        i++;
-    }
-
-    if (argc == 2) {
         int j = 0;
-        while (args[j]) {
-            free(args[j]);
+        while (j < splited_count) {
+            if (!is_valid_number(splited[j]) || !is_number(splited[j])) {
+                printf("Error\n");
+                free_allocated_memory(splited, NULL, 0);
+                return 1;
+            }
             j++;
         }
-        free(args);
+
     }
-    print_stack(stack_a, count);
-    free_stack(stack_a);
-    return 0;
 }
