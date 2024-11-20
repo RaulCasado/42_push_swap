@@ -40,15 +40,15 @@ int ft_strcmp(const char *s1, const char *s2) {
     return (unsigned char)*s1 - (unsigned char)*s2;
 }
 
-int is_alredy_ordered(int *stack, int count) {
+int is_already_ordered(int *stack, int count) {
     int i = 0;
     while (i < count - 1) {
-        if (stack[i] > stack[i + 1]) {
-            return 1;
+        if (stack[i + 1] < stack[i]) {
+            return 0;
         }
         i++;
     }
-    return 0;
+    return 1;
 }
 int has_consecutive_spaces(char *str) {
     while (*str) {
@@ -104,7 +104,7 @@ long long ft_atoi_long(char *str) {
     return res * sign;
 }
 
-int is_valid_number(char *str) {
+int is_int(char *str) {
     long long num = ft_atoi_long(str);
     if (!is_number(str))
         return 0;
@@ -135,9 +135,10 @@ void free_allocated_memory(char **splited,int *stack,int count) {
 
 int main(int argc, char **argvs) {
     if (argc < 2) {
-        printf("Error\n");
+        printf("Error no suficientes argumentos\n");
         return 1;
     }
+    int total_numbers = 0;
     int i = 1;
     while (argvs[i]) {
         int splited_count = ft_count_words(argvs[i], ' ');
@@ -146,13 +147,45 @@ int main(int argc, char **argvs) {
             return 1;
         int j = 0;
         while (j < splited_count) {
-            if (!is_valid_number(splited[j]) || !is_number(splited[j])) {
-                printf("Error\n");
+            if (!is_int(splited[j]) || !is_number(splited[j])) {
+                printf("Error no es numero o no cabe en un int\n");
                 free_allocated_memory(splited, NULL, 0);
                 return 1;
             }
+            total_numbers++;
             j++;
         }
+        i++;
+    }
 
+    int *stack = (int *)malloc(sizeof(int) * total_numbers);
+    if (!stack)
+        return 1;
+    int k = 1;
+    int l = 0;
+    int z = 0;
+    while (argvs[k]) {
+        int splited_count = ft_count_words(argvs[k], ' ');
+        char **splited = ft_split(argvs[k], ' ');
+        if (!splited)
+            return 1;
+        l = 0;
+        while (l < splited_count) {
+            if (is_alredy_in_stack(stack, total_numbers, ft_atoi(splited[l]))) {
+                printf("Error ya esta en el stack\n");
+                free_allocated_memory(splited, stack, l);
+                return 1;
+            }
+            stack[z] = ft_atoi(splited[l]);
+            printf("stack[%d] = %d\n", z, stack[z]);
+            l++;
+            z++;
+        }
+        k++;
+    }
+    if (is_already_ordered(stack, total_numbers)) {
+        printf("Error ya estan ordenados\n");
+        free(stack);
+        return 1;
     }
 }
