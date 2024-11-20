@@ -30,16 +30,6 @@ int	ft_count_words(char *ptr, char delimiter)
 	return (total_words);
 }
 
-int ft_strcmp(const char *s1, const char *s2) {
-    if (!s1 || !s2)
-        return 0;
-    while (*s1 && *s2 && *s1 == *s2) {
-        s1++;
-        s2++;
-    }
-    return (unsigned char)*s1 - (unsigned char)*s2;
-}
-
 int is_already_ordered(int *stack, int count) {
     int i = 0;
     while (i < count - 1) {
@@ -49,29 +39,6 @@ int is_already_ordered(int *stack, int count) {
         i++;
     }
     return 1;
-}
-int has_consecutive_spaces(char *str) {
-    while (*str) {
-        if (*str == ' ' && *(str + 1) == ' ')
-            return 1;
-        str++;
-    }
-    return 0;
-}
-
-int contains_repeated(char **argvs) {
-    int i = 0;
-    int j;
-    while (argvs[i]) {
-        j = i + 1;
-        while (argvs[j]) {
-            if (ft_strcmp(argvs[i], argvs[j]) == 0)
-                return 1;
-            j++;
-        }
-        i++;
-    }
-    return 0;
 }
 
 int is_number(char *str) {
