@@ -6,13 +6,13 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:31:19 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:48:44 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_count_words(char *ptr, char delimiter)
 {

@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
+/*   Updated: 2024/11/22 11:31:59 by racasado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+int	check_if_already_sorted(int *stack, int total_numbers)
+{
+	if (is_already_ordered(stack, total_numbers))
+	{
+		printf("Error ya estan ordenados\n");
+		free(stack);
+		return (0);
+	}
+	return (1);
+}
+
+void	process_stacks(int *stack, int total_numbers)
+{
+	int	*stack_b;
+
+	stack_b = ft_calloc(0, sizeof(int));
+	if (!stack_b)
+	{
+		free(stack);
+		printf("Error al asignar memoria para stack_b\n");
+		return ;
+	}
+	printf("stack before \n");
+	print_stack(stack, total_numbers);
+	free(stack);
+	free(stack_b);
+}
+
+int	main(int argc, char **argvs)
+{
+	int	total_numbers;
+	int	*stack;
+
+	if (!validate_arguments(argc))
+		return (1);
+	total_numbers = count_total_numbers(argvs);
+	if (total_numbers < 0)
+		return (1);
+	stack = initialize_stack(total_numbers);
+	if (!stack)
+		return (1);
+	if (!fill_stack(argvs, stack))
+		return (1);
+	if (!check_if_already_sorted(stack, total_numbers))
+		return (1);
+	process_stacks(stack, total_numbers);
+	return (0);
+}
