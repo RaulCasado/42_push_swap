@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:26:48 by racasado          #+#    #+#             */
-/*   Updated: 2024/10/01 11:30:31 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:58:50 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_strlen(const char *s);
+int		ft_strlen_2(const char *s);
 int		ft_percentage(void);
 int		ft_putchar(va_list argcs);
 int		ft_putstring(va_list argcs);

@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:38:38 by racasado          #+#    #+#             */
-/*   Updated: 2024/09/23 12:26:47 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:59:42 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	ft_putpointer(va_list argcs)
 	if (!str)
 		return (0);
 	write(1, "0x", 2);
-	len = ft_strlen(str) + 2;
-	write(1, str, ft_strlen(str));
+	len = ft_strlen_2(str) + 2;
+	write(1, str, ft_strlen_2(str));
 	free(str);
 	return (len);
 }

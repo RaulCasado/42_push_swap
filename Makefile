@@ -1,11 +1,13 @@
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -no-pie
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-INCLUDES = -I$(LIBFT_DIR)
+PRINTF_DIR = printf
+PRINTF = $(PRINTF_DIR)/libftprintf.a
+INCLUDES = -I$(LIBFT_DIR) -I$(PRINTF_DIR)
 
 SRC_DIR = src
 
@@ -13,22 +15,30 @@ SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/push.c $(SRC_DIR)/reverse.c $(SRC_DIR)/swaps
 	$(SRC_DIR)/memory_utils.c $(SRC_DIR)/parse_utils.c $(SRC_DIR)/stack_utils.c $(SRC_DIR)/validation_utils.c
 OBJS = $(SRCS:.c=.o)
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) $(PRINTF) $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
+$(PRINTF):
+	@$(MAKE) -C $(PRINTF_DIR)
+
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT) $(PRINTF)
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(PRINTF_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(PRINTF_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+norm:
+	norminette $(SRCS) $(SRC_DIR)/push_swap.h $(PRINTF_DIR)/*.c $(PRINTF_DIR)/*.h
+
+.PHONY: all clean fclean re norm

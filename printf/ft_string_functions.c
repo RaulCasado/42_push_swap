@@ -6,13 +6,13 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:33:35 by racasado          #+#    #+#             */
-/*   Updated: 2024/09/20 19:36:04 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:59:16 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(const char *s)
+int	ft_strlen_2(const char *s)
 {
 	int	i;
 

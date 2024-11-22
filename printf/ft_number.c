@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 16:54:07 by racasado          #+#    #+#             */
-/*   Updated: 2024/09/20 19:35:10 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:59:55 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_putnbr_base(va_list argcs, char *base, int is_signed)
 	str = itoa_base(n, base, is_signed);
 	if (!str)
 		return (0);
-	write(1, str, ft_strlen(str));
-	len = ft_strlen(str);
+	write(1, str, ft_strlen_2(str));
+	len = ft_strlen_2(str);
 	free(str);
 	return (len);
 }

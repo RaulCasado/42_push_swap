@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:31:59 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:00:40 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_if_already_sorted(int *stack, int total_numbers)
 {
 	if (is_already_ordered(stack, total_numbers))
 	{
-		printf("Error ya estan ordenados\n");
+		ft_printf("Error ya estan ordenados\n");
 		free(stack);
 		return (0);
 	}
@@ -33,10 +33,10 @@ void	process_stacks(int *stack, int total_numbers)
 	if (!stack_b)
 	{
 		free(stack);
-		printf("Error al asignar memoria para stack_b\n");
+		ft_printf("Error al asignar memoria para stack_b\n");
 		return ;
 	}
-	printf("stack before \n");
+	ft_printf("stack before \n");
 	print_stack(stack, total_numbers);
 	free(stack);
 	free(stack_b);

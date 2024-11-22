@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:48:44 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:00:56 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	count_numbers_in_splited(char **splited, int splited_count)
 	{
 		if (!is_int(splited[j]) || !is_number(splited[j]))
 		{
-			printf("Error no es numero o no cabe en un int\n");
+			ft_printf("Error no es numero o no cabe en un int\n");
 			free_allocated_memory(splited, NULL, 0);
 			return (-1);
 		}
@@ -94,7 +94,7 @@ int	process_splited_numbers(char **splited, int splited_count, int *stack,
 		num = ft_atoi(splited[l]);
 		if (is_alredy_in_stack(stack, *z, num))
 		{
-			printf("Error ya esta en el stack\n");
+			ft_printf("Error ya esta en el stack\n");
 			free_allocated_memory(splited, stack, l);
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 17:09:29 by racasado          #+#    #+#             */
-/*   Updated: 2024/09/20 19:35:45 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:59:09 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*itoa_base(long long n, char *base, int is_signed)
 	int		is_negative;
 
 	is_negative = 0;
-	base_len = ft_strlen(base);
+	base_len = ft_strlen_2(base);
 	if (is_signed && n < 0)
 	{
 		is_negative = 1;
@@ -67,7 +67,7 @@ char	*pointer_to_string(unsigned long long n, char *base)
 	int		len;
 	int		base_len;
 
-	base_len = ft_strlen(base);
+	base_len = ft_strlen_2(base);
 	len = ft_pointer_len(n, base_len);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
