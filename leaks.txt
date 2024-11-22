@@ -1,0 +1,5 @@
+si no le pongo nada no tiene leaks
+si le pongo los elementos ordenados tiene leaks
+si le pongo no numeros tambien tiene leaks
+si no cabe en un int tambien tiene leaks
+si va bien tiene aun mas leaks xd

@@ -1,7 +1,7 @@
 NAME = push_swap
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -no-pie
+CFLAGS = -Wall -Wextra -Werror -no-pie -g
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
