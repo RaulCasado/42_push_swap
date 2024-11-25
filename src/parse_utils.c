@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 13:14:26 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:52:41 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	count_numbers_in_splited(char **splited, int splited_count)
 		if (!is_int(splited[j]) || !is_number(splited[j]))
 		{
 			ft_printf("Error no es numero o no cabe en un int\n");
-			free_allocated_memory(splited, NULL, 0);
+			free_allocated_memory(splited, NULL);
 			return (-1);
 		}
 		total_numbers++;
@@ -76,7 +76,7 @@ int	count_total_numbers(char **argvs)
 		if (result == -1)
 			return (-1);
 		total_numbers += result;
-		free_allocated_memory(splited, NULL, 0);
+		free_allocated_memory(splited, NULL);
 		i++;
 	}
 	return (total_numbers);
@@ -95,7 +95,7 @@ int	process_splited_numbers(char **splited, int splited_count, int *stack,
 		if (is_alredy_in_stack(stack, *z, num))
 		{
 			ft_printf("Error ya esta en el stack\n");
-			free_allocated_memory(splited, stack, l);
+			free_allocated_memory(splited, stack);
 			return (0);
 		}
 		stack[(*z)++] = num;
@@ -121,7 +121,7 @@ int	fill_stack(char **argvs, int *stack)
 			return (0);
 		if (!process_splited_numbers(splited, splited_count, stack, &z))
 			return (0);
-		free_allocated_memory(splited, NULL, 0);
+		free_allocated_memory(splited, NULL);
 		k++;
 	}
 	return (1);

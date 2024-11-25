@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:53:45 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:05:52 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+
 /* Stack Operations */
 void	print_stack(int *stack, int count);
 int		is_already_ordered(int *stack, int count);
 int		is_alredy_in_stack(int *stack, int count, int num);
-void	free_allocated_memory(char **splited, int *stack, int count);
 int		*initialize_stack(int total_numbers);
 
 /* Argument Validation */
@@ -39,7 +39,8 @@ int		process_splited_numbers(char **splited, int splited_count, int *stack,
 int		fill_stack(char **argvs, int *stack);
 
 /* Memory Management */
-void	free_allocated_memory(char **splited, int *stack, int count);
+void	free_allocated_memory(char **splited, int *stack);
+int		main_free(int *stack, int *stack_b);
 
 /* Main Logic */
 int		check_if_already_sorted(int *stack, int total_numbers);

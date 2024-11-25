@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 12:00:40 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:28:26 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,6 @@ int	check_if_already_sorted(int *stack, int total_numbers)
 		return (0);
 	}
 	return (1);
-}
-
-void	process_stacks(int *stack, int total_numbers)
-{
-	int	*stack_b;
-
-	stack_b = ft_calloc(0, sizeof(int));
-	if (!stack_b)
-	{
-		free(stack);
-		ft_printf("Error al asignar memoria para stack_b\n");
-		return ;
-	}
-	ft_printf("stack before \n");
-	print_stack(stack, total_numbers);
-	free(stack);
-	free(stack_b);
 }
 
 int	main(int argc, char **argvs)
@@ -59,6 +42,7 @@ int	main(int argc, char **argvs)
 		return (1);
 	if (!check_if_already_sorted(stack, total_numbers))
 		return (1);
-	process_stacks(stack, total_numbers);
+	print_stack(stack, total_numbers);
+	free(stack);
 	return (0);
 }

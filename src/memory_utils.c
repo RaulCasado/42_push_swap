@@ -6,19 +6,19 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 12:00:49 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:16:07 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	free_allocated_memory(char **splited, int *stack, int count)
+void	free_allocated_memory(char **splited, int *stack)
 {
 	int	i;
 
 	i = 0;
-	while (i < count)
+	while (splited[i])
 	{
 		free(splited[i]);
 		i++;
