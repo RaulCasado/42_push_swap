@@ -6,58 +6,67 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:13:09 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:48:51 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:11:50 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(int **stack_a, int **stack_b, int count_a, int count_b)
+void	adjust_new_position(t_stacks *stacks)
 {
-	int	i;
+	t_stack_node	*current;
+	int				pos;
 
-	if (count_b < 1)
-		return ;
-	i = count_a;
-	while (i > 0)
+	current = stacks->stack_a;
+	pos = 0;
+	while (current)
 	{
-		(*stack_a)[i] = (*stack_a)[i - 1];
-		i--;
+		current->position = pos;
+		current = current->next;
+		pos++;
 	}
-	(*stack_a)[0] = (*stack_b)[0];
-	i = 0;
-	while (i < count_b - 1)
+	current = stacks->stack_b;
+	pos = 0;
+	while (current)
 	{
-		(*stack_b)[i] = (*stack_b)[i + 1];
-		i++;
+		current->position = pos;
+		current = current->next;
+		pos++;
 	}
-	(*stack_b)[i] = 0;
 }
 
-void	push_b(int **stack_a, int **stack_b, int count_a, int count_b)
+void	push_a(t_stacks *stacks)
 {
-	int	i;
+	t_stack_node	*temp;
 
-	if (count_a < 1)
+	if (stacks->count_b < 1)
 		return ;
-	i = count_b;
-	while (i > 0)
-	{
-		(*stack_b)[i] = (*stack_b)[i - 1];
-		i--;
-	}
-	(*stack_b)[0] = (*stack_a)[0];
-	i = 0;
-	while (i < count_a - 1)
-	{
-		(*stack_a)[i] = (*stack_a)[i + 1];
-		i++;
-	}
-	(*stack_a)[i] = 0;
+	temp = stacks->stack_b;
+	stacks->stack_b = stacks->stack_b->next;
+	temp->next = stacks->stack_a;
+	stacks->stack_a = temp;
+	adjust_new_position(stacks);
+	stacks->count_a++;
+	stacks->count_b--;
 }
 
-void	push_ab(int **stack_a, int **stack_b, int count_a, int count_b)
+void	push_b(t_stacks *stacks)
 {
-	push_a(stack_a, stack_b, count_a, count_b);
-	push_b(stack_a, stack_b, count_a, count_b);
+	t_stack_node	*temp;
+
+	if (stacks->count_a < 1)
+		return ;
+	temp = stacks->stack_a;
+	stacks->stack_a = stacks->stack_a->next;
+	temp->next = stacks->stack_b;
+	stacks->stack_b = temp;
+	adjust_new_position(stacks);
+	stacks->count_a--;
+	stacks->count_b++;
+}
+
+void	push_ab(t_stacks *stacks)
+{
+	push_a(stacks);
+	push_b(stacks);
 }

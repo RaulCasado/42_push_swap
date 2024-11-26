@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 12:41:03 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:10:51 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int	check_if_already_sorted(int *stack, int total_numbers)
 	return (1);
 }
 
-int  populate_stack(int *stack, t_stacks *stacks, int total_numbers)
+int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < total_numbers)
-    {
-        if (!add_node_to_a(stacks, stack[i]))
-            return 0;
-        i++;
-    }
-	return 1;
+	i = 0;
+	while (i < total_numbers)
+	{
+		if (!add_node_to_a(stacks, stack[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argvs)
@@ -69,6 +69,11 @@ int	main(int argc, char **argvs)
 		free_stacks(stacks);
 		return (1);
 	}
+	ft_printf("Stacks inicializados\n");
+	show_t_stacks(stacks);
+	ft_printf("Procesando stacks\n");
+	reverse_rotate_a(stacks);
+	ft_printf("Stacks procesados\n");
 	show_t_stacks(stacks);
 	free(stack);
 	free_stacks(stacks);

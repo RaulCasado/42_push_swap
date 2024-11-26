@@ -6,53 +6,72 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:13:31 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:48:54 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:10:22 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate_a(int **stack_a, int **stack_b, int count_a, int count_b)
+void	reverse_rotate_a(t_stacks *stacks)
 {
-	int	tmp;
-	int	i;
+	t_stack_node	*last;
+	t_stack_node	*second_last;
+	t_stack_node	*current;
+	int				pos;
 
-	(void)count_b;
-	(void)stack_b;
-	if (count_a < 2)
+	if (stacks->count_a < 2)
 		return ;
-	tmp = (*stack_a)[count_a - 1];
-	i = count_a - 1;
-	while (i > 0)
+	last = stacks->stack_a;
+	second_last = NULL;
+	while (last->next)
 	{
-		(*stack_a)[i] = (*stack_a)[i - 1];
-		i--;
+		second_last = last;
+		last = last->next;
 	}
-	(*stack_a)[0] = tmp;
+	second_last->next = NULL;
+	last->next = stacks->stack_a;
+	stacks->stack_a = last;
+	current = stacks->stack_a;
+	pos = 0;
+	while (current)
+	{
+		current->position = pos;
+		current = current->next;
+		pos++;
+	}
 }
 
-void	reverse_rotate_b(int **stack_a, int **stack_b, int count_a, int count_b)
+void	reverse_rotate_b(t_stacks *stacks)
 {
-	int	tmp;
-	int	i;
+	t_stack_node	*last;
+	t_stack_node	*second_last;
+	t_stack_node	*current;
+	int				pos;
 
-	(void)count_a;
-	(void)stack_a;
-	if (count_b < 2)
+	if (stacks->count_b < 2)
 		return ;
-	tmp = (*stack_b)[count_b - 1];
-	i = count_b - 1;
-	while (i > 0)
+	last = stacks->stack_b;
+	second_last = NULL;
+	while (last->next)
 	{
-		(*stack_b)[i] = (*stack_b)[i - 1];
-		i--;
+		second_last = last;
+		last = last->next;
 	}
-	(*stack_b)[0] = tmp;
+	second_last->next = NULL;
+	last->next = stacks->stack_b;
+	stacks->stack_b = last;
+	current = stacks->stack_b;
+	pos = 0;
+	while (current)
+	{
+		current->position = pos;
+		current = current->next;
+		pos++;
+	}
 }
 
-void	reverse_rotate_ab(int **stack_a, int **stack_b, int count_a,
-		int count_b)
+void	reverse_rotate_ab(t_stacks *stacks)
 {
-	reverse_rotate_a(stack_a, stack_b, count_a, count_b);
-	reverse_rotate_b(stack_a, stack_b, count_a, count_b);
+	reverse_rotate_a(stacks);
+	reverse_rotate_b(stacks);
 }

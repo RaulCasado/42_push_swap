@@ -6,40 +6,36 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:04:53 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/22 11:49:00 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:10:35 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(int **stack_a, int **stack_b, int count_a, int count_b)
+void	swap_a(t_stacks *stacks)
 {
 	int	tmp;
 
-	(void)count_b;
-	(void)stack_b;
-	if (count_a < 2)
+	if (stacks->count_a < 2)
 		return ;
-	tmp = (*stack_a)[0];
-	(*stack_a)[0] = (*stack_a)[1];
-	(*stack_a)[1] = tmp;
+	tmp = stacks->stack_a->value;
+	stacks->stack_a->value = stacks->stack_a->next->value;
+	stacks->stack_a->next->value = tmp;
 }
 
-void	swap_b(int **stack_a, int **stack_b, int count_a, int count_b)
+void	swap_b(t_stacks *stacks)
 {
 	int	tmp;
 
-	(void)count_a;
-	(void)stack_a;
-	if (count_b < 2)
+	if (stacks->count_b < 2)
 		return ;
-	tmp = (*stack_b)[0];
-	(*stack_b)[0] = (*stack_b)[1];
-	(*stack_b)[1] = tmp;
+	tmp = stacks->stack_b->value;
+	stacks->stack_b->value = stacks->stack_b->next->value;
+	stacks->stack_b->next->value = tmp;
 }
 
-void	swap_ab(int **stack_a, int **stack_b, int count_a, int count_b)
+void	swap_ab(t_stacks *stacks)
 {
-	swap_a(stack_a, stack_b, count_a, count_b);
-	swap_b(stack_a, stack_b, count_a, count_b);
+	swap_a(stacks);
+	swap_b(stacks);
 }
