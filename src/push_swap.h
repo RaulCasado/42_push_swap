@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/25 14:05:52 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:34:26 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+typedef struct s_stack_node {
+    int                 value;
+    int                 weight;
+    int                 position;
+    struct s_stack_node *next;
+} t_stack_node;
+
+typedef struct s_stacks {
+    t_stack_node    *stack_a;
+    t_stack_node    *stack_b;
+    int             count_a;
+    int             count_b;
+} t_stacks;
 
 /* Stack Operations */
 void	print_stack(int *stack, int count);
@@ -45,5 +58,11 @@ int		main_free(int *stack, int *stack_b);
 /* Main Logic */
 int		check_if_already_sorted(int *stack, int total_numbers);
 void	process_stacks(int *stack, int total_numbers);
+
+/* Structs */
+int		add_node_to_a(t_stacks *stacks, int value);
+t_stacks	*initialize_stacks(void);
+void   show_t_stacks(t_stacks *stacks);
+void  free_stacks(t_stacks *stacks);
 
 #endif

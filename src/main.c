@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/25 12:28:26 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:41:03 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,25 @@ int	check_if_already_sorted(int *stack, int total_numbers)
 	return (1);
 }
 
+int  populate_stack(int *stack, t_stacks *stacks, int total_numbers)
+{
+    int i;
+
+    i = 0;
+    while (i < total_numbers)
+    {
+        if (!add_node_to_a(stacks, stack[i]))
+            return 0;
+        i++;
+    }
+	return 1;
+}
+
 int	main(int argc, char **argvs)
 {
-	int	total_numbers;
-	int	*stack;
+	int			total_numbers;
+	int			*stack;
+	t_stacks	*stacks;
 
 	if (!validate_arguments(argc))
 		return (1);
@@ -42,7 +57,20 @@ int	main(int argc, char **argvs)
 		return (1);
 	if (!check_if_already_sorted(stack, total_numbers))
 		return (1);
-	print_stack(stack, total_numbers);
+	stacks = initialize_stacks();
+	if (!stacks)
+	{
+		free(stack);
+		return (1);
+	}
+	if (!populate_stack(stack, stacks, total_numbers))
+	{
+		free(stack);
+		free_stacks(stacks);
+		return (1);
+	}
+	show_t_stacks(stacks);
 	free(stack);
+	free_stacks(stacks);
 	return (0);
 }

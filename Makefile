@@ -12,7 +12,9 @@ INCLUDES = -I$(LIBFT_DIR) -I$(PRINTF_DIR)
 SRC_DIR = src
 
 SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/push.c $(SRC_DIR)/reverse.c $(SRC_DIR)/swaps.c \
-	$(SRC_DIR)/memory_utils.c $(SRC_DIR)/parse_utils.c $(SRC_DIR)/stack_utils.c $(SRC_DIR)/validation_utils.c
+    $(SRC_DIR)/memory_utils.c $(SRC_DIR)/parse_utils.c $(SRC_DIR)/stack_utils.c $(SRC_DIR)/validation_utils.c \
+    $(SRC_DIR)/struct_utils.c
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(LIBFT) $(PRINTF) $(NAME)
