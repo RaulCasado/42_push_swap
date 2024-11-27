@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:10:38 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:46:48 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	validate_arguments(int argc)
 {
 	if (argc < 2)
 	{
-		ft_printf("Error no suficientes argumentos\n");
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	return (1);

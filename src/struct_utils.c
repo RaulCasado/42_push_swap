@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:26:58 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:11:33 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:52:47 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack_node	*create_node(int value, int position)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->weight = 0;
+	new_node->weight = -1;
 	new_node->position = position;
 	new_node->next = NULL;
 	return (new_node);

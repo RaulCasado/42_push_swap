@@ -6,11 +6,30 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:13:31 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:10:22 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:36:03 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	reverse_rotate(t_stacks *stacks, char stack_id)
+{
+	if (stack_id == 'a')
+	{
+		reverse_rotate_a(stacks);
+		ft_printf("rra\n");
+	}
+	else if (stack_id == 'b')
+	{
+		reverse_rotate_b(stacks);
+		ft_printf("rrb\n");
+	}
+	else if (stack_id == 'r')
+	{
+		reverse_rotate_ab(stacks);
+		ft_printf("rrr\n");
+	}
+}
 
 void	reverse_rotate_a(t_stacks *stacks)
 {

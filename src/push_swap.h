@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:10:08 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:32:30 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,22 @@ void					push_a(t_stacks *stacks);
 void					push_b(t_stacks *stacks);
 void					push_ab(t_stacks *stacks);
 
-/*Reverse Rotate*/
+/* Reverse Rotate */
 void					reverse_rotate_a(t_stacks *stacks);
 void					reverse_rotate_b(t_stacks *stacks);
 void					reverse_rotate_ab(t_stacks *stacks);
+
+/* Rotates */
+void					rotate_a(t_stacks *stacks);
+void					rotate_b(t_stacks *stacks);
+void					rotate_ab(t_stacks *stacks);
+
+/* Auxiliaries for Swap, Rotate, Reverse Rotate */
+void					swap(t_stacks *stacks, char stack_id);
+void					rotate(t_stacks *stacks, char stack_id);
+void					reverse_rotate(t_stacks *stacks, char stack_id);
+
+/* Order */
+void					sort_three(t_stacks *stacks);
 
 #endif

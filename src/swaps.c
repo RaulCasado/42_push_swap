@@ -6,11 +6,30 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:04:53 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:10:35 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:29:07 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	swap(t_stacks *stacks, char stack_id)
+{
+	if (stack_id == 'a')
+	{
+		swap_a(stacks);
+		ft_printf("sa\n");
+	}
+	else if (stack_id == 'b')
+	{
+		swap_b(stacks);
+		ft_printf("sb\n");
+	}
+	else if (stack_id == 's')
+	{
+		swap_ab(stacks);
+		ft_printf("ss\n");
+	}
+}
 
 void	swap_a(t_stacks *stacks)
 {

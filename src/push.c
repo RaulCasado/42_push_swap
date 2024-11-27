@@ -6,13 +6,13 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:13:09 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/26 14:11:50 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:37:20 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	adjust_new_position(t_stacks *stacks)
+static void	adjust_new_position(t_stacks *stacks)
 {
 	t_stack_node	*current;
 	int				pos;
@@ -48,6 +48,7 @@ void	push_a(t_stacks *stacks)
 	adjust_new_position(stacks);
 	stacks->count_a++;
 	stacks->count_b--;
+	ft_printf("pa\n");
 }
 
 void	push_b(t_stacks *stacks)
@@ -63,10 +64,5 @@ void	push_b(t_stacks *stacks)
 	adjust_new_position(stacks);
 	stacks->count_a--;
 	stacks->count_b++;
-}
-
-void	push_ab(t_stacks *stacks)
-{
-	push_a(stacks);
-	push_b(stacks);
+	ft_printf("pb\n");
 }

@@ -1,42 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_utils.c                                     :+:      :+:    :+:   */
+/*   order.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 11:46:19 by racasado         ###   ########.fr       */
+/*   Created: 2024/11/27 11:18:28 by racasado          #+#    #+#             */
+/*   Updated: 2024/11/27 12:01:05 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-void	free_allocated_memory(char **splited, int *stack)
-{
-	int	i;
 
-	i = 0;
-	while (splited[i])
-	{
-		free(splited[i]);
-		i++;
-	}
-	free(splited);
-	if (stack)
-		free(stack);
-}
-
-int	*initialize_stack(int total_numbers)
-{
-	int	*stack;
-
-	stack = (int *)ft_calloc(total_numbers, sizeof(int));
-	if (!stack)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (NULL);
-	}
-	return (stack);
-}
