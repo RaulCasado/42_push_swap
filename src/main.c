@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 12:31:25 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:55:26 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,37 +69,11 @@ int	main(int argc, char **argvs)
 		free_stacks(stacks);
 		return (1);
 	}
-ft_printf("init a and b \n");
-show_t_stacks(stacks);
-
-ft_printf("exec sa \n");
-swap(stacks, 'a');
-show_t_stacks(stacks);
-
-ft_printf("exec pb pb pb \n");
-push_b(stacks);
-push_b(stacks);
-push_b(stacks);
-show_t_stacks(stacks);
-
-ft_printf("exec rr \n");
-rotate(stacks, 'r');
-show_t_stacks(stacks);
-
-ft_printf("exec rrr \n");
-reverse_rotate(stacks, 'r');
-show_t_stacks(stacks);
-
-ft_printf("exec sa \n");
-swap(stacks, 'a');
-show_t_stacks(stacks);
-
-ft_printf("exec pa pa pa \n");
-push_a(stacks);
-push_a(stacks);
-push_a(stacks);
-show_t_stacks(stacks);
-
+	ft_printf("Stack A: \n");
+	show_t_stacks(stacks);
+	sort_three(stacks);
+	ft_printf("Stack A: \n");
+	show_t_stacks(stacks);
 	free(stack);
 	free_stacks(stacks);
 	return (0);

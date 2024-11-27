@@ -6,11 +6,9 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:40:13 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 12:37:13 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:06:17 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
 
 #include "push_swap.h"
 
@@ -32,6 +30,7 @@ void	rotate(t_stacks *stacks, char stack_id)
 		ft_printf("rr\n");
 	}
 }
+
 static void	adjust_new_position(t_stacks *stacks)
 {
 	t_stack_node	*current;
@@ -54,6 +53,7 @@ static void	adjust_new_position(t_stacks *stacks)
 		pos++;
 	}
 }
+
 void	rotate_a(t_stacks *stacks)
 {
 	t_stack_node	*first;
@@ -68,7 +68,7 @@ void	rotate_a(t_stacks *stacks)
 		last = last->next;
 	first->next = NULL;
 	last->next = first;
-    adjust_new_position(stacks);
+	adjust_new_position(stacks);
 }
 
 void	rotate_b(t_stacks *stacks)
@@ -85,7 +85,7 @@ void	rotate_b(t_stacks *stacks)
 		last = last->next;
 	first->next = NULL;
 	last->next = first;
-    adjust_new_position(stacks);
+	adjust_new_position(stacks);
 }
 
 void	rotate_ab(t_stacks *stacks)
