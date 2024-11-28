@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:28 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:03:04 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:07:02 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	sort_five(t_stacks *stacks)
 			push_b(stacks);
 		else
 		{
-			if (min->position <= stacks->count_a/2)
+			if (min->position <= stacks->count_a / 2)
 				rotate(stacks, 'a');
 			else
 				reverse_rotate(stacks, 'a');

@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 12:59:26 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:33:27 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "../libft/libft.h"
 # include "../printf/ft_printf.h"
-# include <stdio.h>
-# include <stdlib.h>
 
 typedef struct s_stack_node
 {
@@ -34,6 +32,22 @@ typedef struct s_stacks
 	int					count_a;
 	int					count_b;
 }						t_stacks;
+
+typedef struct s_data
+{
+	int					total_numbers;
+	int					*stack;
+	t_stacks			*stacks;
+}						t_data;
+
+/* Main functions*/
+int						check_if_already_sorted(int *stack, int total_numbers);
+int						populate_stack(int *stack, t_stacks *stacks,
+							int total_numbers);
+int						validate_and_initialize(int argc, char **argvs,
+							t_data *data);
+int						initialize_and_populate_stacks(t_data *data);
+int						setup_stacks(int argc, char **argvs, t_data *data);
 
 /* Stack Operations */
 void					print_stack(int *stack, int count);
@@ -57,7 +71,6 @@ int						fill_stack(char **argvs, int *stack);
 
 /* Memory Management */
 void					free_allocated_memory(char **splited, int *stack);
-int						main_free(int *stack, int *stack_b);
 
 /* Main Logic */
 int						check_if_already_sorted(int *stack, int total_numbers);

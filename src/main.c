@@ -6,79 +6,37 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:03:43 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:19:36 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-int	check_if_already_sorted(int *stack, int total_numbers)
+void	perform_sort(t_data *data)
 {
-	if (is_already_ordered(stack, total_numbers))
-	{
-		ft_putstr_fd("Error",2);
-		free(stack);
-		return (0);
-	}
-	return (1);
+	if (data->total_numbers == 2)
+		swap(data->stacks, 'a');
+	else if (data->total_numbers == 3)
+		sort_three(data->stacks);
+	else if (data->total_numbers == 4)
+		sort_four(data->stacks);
+	else if (data->total_numbers == 5)
+		sort_five(data->stacks);
 }
 
-int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
+void	clean_up(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < total_numbers)
-	{
-		if (!add_node_to_a(stacks, stack[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	free(data->stack);
+	free_stacks(data->stacks);
 }
 
 int	main(int argc, char **argvs)
 {
-	int			total_numbers;
-	int			*stack;
-	t_stacks	*stacks;
+	t_data	data;
 
-	if (!validate_arguments(argc))
+	if (setup_stacks(argc, argvs, &data))
 		return (1);
-	total_numbers = count_total_numbers(argvs);
-	if (total_numbers < 0)
-		return (1);
-	stack = initialize_stack(total_numbers);
-	if (!stack)
-		return (1);
-	if (!fill_stack(argvs, stack))
-		return (1);
-	if (!check_if_already_sorted(stack, total_numbers))
-		return (1);
-	stacks = initialize_stacks();
-	if (!stacks)
-	{
-		free(stack);
-		return (1);
-	}
-	if (!populate_stack(stack, stacks, total_numbers))
-	{
-		free(stack);
-		free_stacks(stacks);
-		return (1);
-	}
-	update_target_positions(stacks);
-	if (total_numbers == 2)
-		swap(stacks, 'a');
-	else if (total_numbers == 3)
-		sort_three(stacks);
-	else if (total_numbers == 4)
-		sort_four(stacks);
-	else if (total_numbers == 5)
-		sort_five(stacks);
-	free(stack);
-	free_stacks(stacks);
+	perform_sort(&data);
+	clean_up(&data);
 	return (0);
 }
