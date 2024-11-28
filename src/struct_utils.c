@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:26:58 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 10:52:47 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:07:34 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack_node	*create_node(int value, int position)
 	new_node->value = value;
 	new_node->weight = -1;
 	new_node->position = position;
+	new_node->target_position = -1;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -47,13 +48,15 @@ void	show_t_stacks(t_stacks *stacks)
 	node = stacks->stack_a;
 	while (node)
 	{
-		ft_printf("stack_a[%d] = %d\n", node->position, node->value);
+		ft_printf("stack_a[%d] = %d (target_position = %d)\n", node->position,
+			node->value, node->target_position);
 		node = node->next;
 	}
 	node = stacks->stack_b;
 	while (node)
 	{
-		ft_printf("stack_b[%d] = %d\n", node->position, node->value);
+		ft_printf("stack_b[%d] = %d (target_position = %d)\n", node->position,
+			node->value, node->target_position);
 		node = node->next;
 	}
 }

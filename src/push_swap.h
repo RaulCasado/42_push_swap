@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 12:32:30 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:59:26 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack_node
 	int					value;
 	int					weight;
 	int					position;
+	int					target_position;
 	struct s_stack_node	*next;
 }						t_stack_node;
 
@@ -76,7 +77,6 @@ void					swap_ab(t_stacks *stacks);
 /* Push */
 void					push_a(t_stacks *stacks);
 void					push_b(t_stacks *stacks);
-void					push_ab(t_stacks *stacks);
 
 /* Reverse Rotate */
 void					reverse_rotate_a(t_stacks *stacks);
@@ -93,7 +93,10 @@ void					swap(t_stacks *stacks, char stack_id);
 void					rotate(t_stacks *stacks, char stack_id);
 void					reverse_rotate(t_stacks *stacks, char stack_id);
 
-/* Order */
+/* Sorting Functions */
 void					sort_three(t_stacks *stacks);
+void					sort_four(t_stacks *stacks);
+void					sort_five(t_stacks *stacks);
+void					update_target_positions(t_stacks *stacks);
 
 #endif

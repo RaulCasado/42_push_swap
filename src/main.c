@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 12:55:26 by racasado         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:03:43 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,15 @@ int	main(int argc, char **argvs)
 		free_stacks(stacks);
 		return (1);
 	}
-	ft_printf("Stack A: \n");
-	show_t_stacks(stacks);
-	sort_three(stacks);
-	ft_printf("Stack A: \n");
-	show_t_stacks(stacks);
+	update_target_positions(stacks);
+	if (total_numbers == 2)
+		swap(stacks, 'a');
+	else if (total_numbers == 3)
+		sort_three(stacks);
+	else if (total_numbers == 4)
+		sort_four(stacks);
+	else if (total_numbers == 5)
+		sort_five(stacks);
 	free(stack);
 	free_stacks(stacks);
 	return (0);
