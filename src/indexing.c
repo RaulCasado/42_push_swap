@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:32:08 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:14:14 by racasado         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:33:20 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,29 @@ int	binary_search(int *arr, int size, int value)
 
 void	assign_indices(t_stacks *stacks, int total_numbers)
 {
-	t_stack_node *temp;
-	int *arr;
-	int i = 0, idx;
+	t_stack_node	*temp;
+	int				*arr;
+	int				i;
+	int				idx;
 
-	temp=stacks->stack_a;
-	arr=malloc(sizeof(int)*total_numbers);
-	if(!arr)
-		return;
-	while(temp)
+	arr = malloc(sizeof(int) * total_numbers);
+	if (!arr)
+		return ;
+	temp = stacks->stack_a;
+	i = 0;
+	while (temp)
 	{
-		arr[i++]=temp->value;
-		temp=temp->next;
+		arr[i++] = temp->value;
+		temp = temp->next;
 	}
-	ft_sort_int_array(arr,total_numbers);
-	temp=stacks->stack_a;
-	while(temp)
+	ft_sort_int_array(arr, total_numbers);
+	temp = stacks->stack_a;
+	while (temp)
 	{
-		idx=binary_search(arr,total_numbers,temp->value);
-		temp->position_no_change=idx;
-		temp->position=idx;
-		temp=temp->next;
+		idx = binary_search(arr, total_numbers, temp->value);
+		temp->position_no_change = idx;
+		temp->position = idx;
+		temp = temp->next;
 	}
 	free(arr);
 }
-
