@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:37:16 by racasado         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:29:04 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,16 @@ void		bring_min_to_top(t_stacks *stacks);
 void		perform_sort_lis(t_data *data);
 void		perform_sort(t_data *data);
 void		clean_up(t_data *data);
+
+/* lis helpers */
+void		fill_arr(t_stacks *stacks, int *arr, int total);
+void		init_lengths_prev(int *lengths, int *prev, int total);
+void		update_lis(int *arr, int *lengths, int *prev, int i);
+int			find_lis_max(int *lengths, int total, int *max_pos);
+int			calc_lis(int *arr, int *lengths, int *prev, int total);
+
+/* rotations helper*/
+void		apply_double_rotations(
+				t_stacks *stacks, int *a_moves, int *b_moves);
 
 #endif

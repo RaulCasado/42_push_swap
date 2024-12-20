@@ -6,27 +6,11 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:38:35 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:46:17 by racasado         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:22:07 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	apply_double_rotations(t_stacks *stacks, int *a_moves, int *b_moves)
-{
-	while (*a_moves > 0 && *b_moves > 0)
-	{
-		rotate(stacks, 'r');
-		(*a_moves)--;
-		(*b_moves)--;
-	}
-	while (*a_moves < 0 && *b_moves < 0)
-	{
-		reverse_rotate(stacks, 'r');
-		(*a_moves)++;
-		(*b_moves)++;
-	}
-}
 
 static void	apply_single_rotations(t_stacks *stacks, int a_moves, int b_moves)
 {
