@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:33:27 by racasado         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:46:12 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../printf/ft_printf.h"
+# include <stdio.h>
 
 typedef struct s_stack_node
 {
@@ -22,6 +23,7 @@ typedef struct s_stack_node
 	int					weight;
 	int					position;
 	int					target_position;
+	int 				position_no_change;
 	struct s_stack_node	*next;
 }						t_stack_node;
 
@@ -39,6 +41,13 @@ typedef struct s_data
 	int					*stack;
 	t_stacks			*stacks;
 }						t_data;
+
+typedef struct s_cost
+{
+	int					a_moves;
+	int					b_moves;
+	int					total_cost;
+}						t_cost;
 
 /* Main functions*/
 int						check_if_already_sorted(int *stack, int total_numbers);
@@ -111,5 +120,29 @@ void					sort_three(t_stacks *stacks);
 void					sort_four(t_stacks *stacks);
 void					sort_five(t_stacks *stacks);
 void					update_target_positions(t_stacks *stacks);
+void					ft_sort_int_array(int *arr, int size);
+int						binary_search(int *arr, int size, int value);
+void					assign_indices(t_stacks *stacks, int total_numbers);
+
+/* LIS Functions (from lis_utils, lis_mark, etc.) */
+int						*find_lis_indices(t_stacks *stacks, int total_numbers,
+							int *lis_size);
+void					mark_lis_elements(t_stacks *stacks, int *lis_indices,
+							int lis_len, int total_numbers);
+
+/* Insert from B (position calculation) */
+int						find_insert_position(t_stacks *stacks, int val);
+
+/* Cost and insertion logic */
+void					insert_all_from_b(t_stacks *stacks);
+
+/* Rotations */
+void					apply_rotations(t_stacks *stacks, int a_moves, int b_moves);
+void					bring_min_to_top(t_stacks *stacks);
+
+/* Additional sorting logic */
+void					perform_sort_lis(t_data *data);
+void					perform_sort(t_data *data);
+void					clean_up(t_data *data);
 
 #endif

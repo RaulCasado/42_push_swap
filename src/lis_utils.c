@@ -1,0 +1,86 @@
+#include "push_swap.h"
+
+static void fill_arr(t_stacks *stacks, int *arr, int total)
+{
+    t_stack_node *tmp = stacks->stack_a;
+    int i = 0;
+
+    while (i < total)
+    {
+        arr[i] = tmp->position_no_change;
+        tmp = tmp->next;
+        i++;
+    }
+}
+
+static void init_lengths_prev(int *lengths, int *prev, int total)
+{
+    int i = 0;
+    while (i < total)
+    {
+        lengths[i] = 1;
+        prev[i] = -1;
+        i++;
+    }
+}
+
+static int calc_lis(int *arr, int *lengths, int *prev, int total)
+{
+    int i = 0, j, max_len = 0, max_pos = 0;
+
+    while (i < total)
+    {
+        j = 0;
+        while (j < i)
+        {
+            if (arr[j] < arr[i] && lengths[j] + 1 > lengths[i])
+            {
+                lengths[i] = lengths[j] + 1;
+                prev[i] = j;
+            }
+            j++;
+        }
+        if (lengths[i] > max_len)
+        {
+            max_len = lengths[i];
+            max_pos = i;
+        }
+        i++;
+    }
+    return max_pos;
+}
+
+static void rebuild_lis(int *lis_indices, int max_pos, int *prev, int lis_size)
+{
+    int i = max_pos;
+    int j = lis_size - 1;
+
+    while (i >= 0)
+    {
+        lis_indices[j--] = i;
+        i = prev[i];
+        if (i == -1)
+            break;
+    }
+}
+
+int *find_lis_indices(t_stacks *stacks, int total_numbers, int *lis_size)
+{
+    int *arr = malloc(sizeof(int) * total_numbers);
+    int *lengths = malloc(sizeof(int) * total_numbers);
+    int *prev = malloc(sizeof(int) * total_numbers);
+    int max_pos, max_len;
+    int *lis_indices;
+
+    fill_arr(stacks, arr, total_numbers);
+    init_lengths_prev(lengths, prev, total_numbers);
+    max_pos = calc_lis(arr, lengths, prev, total_numbers);
+    max_len = lengths[max_pos];
+    *lis_size = max_len;
+    lis_indices = malloc(sizeof(int) * max_len);
+    rebuild_lis(lis_indices, max_pos, prev, max_len);
+    free(arr);
+    free(lengths);
+    free(prev);
+    return lis_indices;
+}

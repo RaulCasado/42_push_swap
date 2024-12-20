@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:26:58 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 12:07:34 by racasado         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:52:31 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 t_stack_node	*create_node(int value, int position)
 {
-	t_stack_node	*new_node;
+    t_stack_node	*new_node;
 
-	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
-	if (!new_node)
-		return (NULL);
-	new_node->value = value;
-	new_node->weight = -1;
-	new_node->position = position;
-	new_node->target_position = -1;
-	new_node->next = NULL;
-	return (new_node);
+    new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+    if (!new_node)
+        return (NULL);
+    new_node->value = value;
+    new_node->weight = -1;
+    new_node->position = position;        // Aún no asignado
+    new_node->position_no_change = -1; // Aún no asignado
+    new_node->target_position = -1;
+    new_node->next = NULL;
+    return (new_node);
 }
+
 
 t_stacks	*initialize_stacks(void)
 {
@@ -41,25 +43,30 @@ t_stacks	*initialize_stacks(void)
 	return (stacks);
 }
 
-void	show_t_stacks(t_stacks *stacks)
+void show_t_stacks(t_stacks *stacks)
 {
-	t_stack_node	*node;
+    t_stack_node *temp = stacks->stack_a;
+    int i = 0;
 
-	node = stacks->stack_a;
-	while (node)
-	{
-		ft_printf("stack_a[%d] = %d (target_position = %d)\n", node->position,
-			node->value, node->target_position);
-		node = node->next;
-	}
-	node = stacks->stack_b;
-	while (node)
-	{
-		ft_printf("stack_b[%d] = %d (target_position = %d)\n", node->position,
-			node->value, node->target_position);
-		node = node->next;
-	}
+    ft_printf("=== STACK A ===\n");
+    while (temp)
+    {
+        ft_printf("stack_a[%d] = %d (position = %d)\n", i, temp->value, temp->position);
+        temp = temp->next;
+        i++;
+    }
+
+    i = 0;
+    temp = stacks->stack_b;
+    ft_printf("=== STACK B ===\n");
+    while (temp)
+    {
+        ft_printf("stack_b[%d] = %d (position = %d)\n", i, temp->value, temp->position);
+        temp = temp->next;
+        i++;
+    }
 }
+
 
 int	add_node_to_a(t_stacks *stacks, int value)
 {
