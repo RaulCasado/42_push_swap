@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:40:13 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/27 13:06:17 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:38:41 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	rotate(t_stacks *stacks, char stack_id)
-{
-	if (stack_id == 'a')
-	{
-		rotate_a(stacks);
-		ft_printf("ra\n");
-	}
-	else if (stack_id == 'b')
-	{
-		rotate_b(stacks);
-		ft_printf("rb\n");
-	}
-	else if (stack_id == 'r')
-	{
-		rotate_ab(stacks);
-		ft_printf("rr\n");
-	}
-}
 
 static void	adjust_new_position(t_stacks *stacks)
 {
@@ -54,7 +35,7 @@ static void	adjust_new_position(t_stacks *stacks)
 	}
 }
 
-void	rotate_a(t_stacks *stacks)
+static void	rotate_a(t_stacks *stacks)
 {
 	t_stack_node	*first;
 	t_stack_node	*last;
@@ -71,7 +52,7 @@ void	rotate_a(t_stacks *stacks)
 	adjust_new_position(stacks);
 }
 
-void	rotate_b(t_stacks *stacks)
+static void	rotate_b(t_stacks *stacks)
 {
 	t_stack_node	*first;
 	t_stack_node	*last;
@@ -88,8 +69,27 @@ void	rotate_b(t_stacks *stacks)
 	adjust_new_position(stacks);
 }
 
-void	rotate_ab(t_stacks *stacks)
+static void	rotate_ab(t_stacks *stacks)
 {
 	rotate_a(stacks);
 	rotate_b(stacks);
+}
+
+void	rotate(t_stacks *stacks, char stack_id)
+{
+	if (stack_id == 'a')
+	{
+		rotate_a(stacks);
+		ft_printf("ra\n");
+	}
+	else if (stack_id == 'b')
+	{
+		rotate_b(stacks);
+		ft_printf("rb\n");
+	}
+	else if (stack_id == 'r')
+	{
+		rotate_ab(stacks);
+		ft_printf("rr\n");
+	}
 }

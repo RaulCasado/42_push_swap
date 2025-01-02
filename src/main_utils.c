@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:17:06 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/19 23:32:11 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:43:55 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_if_already_sorted(int *stack, int total_numbers)
+static int	check_if_already_sorted(int *stack, int total_numbers)
 {
 	if (is_already_ordered(stack, total_numbers))
 	{
@@ -23,7 +23,7 @@ int	check_if_already_sorted(int *stack, int total_numbers)
 	return (1);
 }
 
-int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
+static int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
 	return (1);
 }
 
-int	validate_and_initialize(int argc, char **argvs, t_data *data)
+static int	validate_and_initialize(int argc, char **argvs, t_data *data)
 {
 	if (!validate_arguments(argc))
 		return (1);
@@ -54,7 +54,7 @@ int	validate_and_initialize(int argc, char **argvs, t_data *data)
 	return (0);
 }
 
-int	initialize_and_populate_stacks(t_data *data)
+static int	initialize_and_populate_stacks(t_data *data)
 {
 	data->stacks = initialize_stacks();
 	if (!data->stacks)

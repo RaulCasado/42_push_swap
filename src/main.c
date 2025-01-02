@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:40:42 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:47:32 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	push_non_lis_to_b(t_stacks *stacks)
 	}
 }
 
-void	perform_sort_lis(t_data *data)
+static void	perform_sort_lis(t_data *data)
 {
 	int	lis_len;
 	int	*lis_indices;
@@ -44,7 +44,7 @@ void	perform_sort_lis(t_data *data)
 	insert_all_from_b(data->stacks);
 }
 
-void	perform_sort(t_data *data)
+static void	perform_sort(t_data *data)
 {
 	if (data->total_numbers == 2)
 		swap(data->stacks, 'a');
@@ -56,7 +56,7 @@ void	perform_sort(t_data *data)
 		perform_sort_lis(data);
 }
 
-void	clean_up(t_data *data)
+static void	clean_up(t_data *data)
 {
 	free(data->stack);
 	free_stacks(data->stacks);

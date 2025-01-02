@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   order.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:28 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:07:02 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:48:57 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sort_three(t_stacks *stacks)
 		reverse_rotate(stacks, 'a');
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+static t_stack_node	*find_min(t_stack_node *stack)
 {
 	t_stack_node	*min_node;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   struct_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 10:26:58 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:40:16 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:53:10 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*create_node(int value, int position)
+static t_stack_node	*create_node(int value, int position)
 {
 	t_stack_node	*new_node;
 
@@ -40,33 +40,6 @@ t_stacks	*initialize_stacks(void)
 	stacks->count_a = 0;
 	stacks->count_b = 0;
 	return (stacks);
-}
-
-void	show_t_stacks(t_stacks *stacks)
-{
-	t_stack_node	*temp;
-	int				i;
-
-	temp = stacks->stack_a;
-	i = 0;
-	ft_printf("=== STACK A ===\n");
-	while (temp)
-	{
-		ft_printf("stack_a[%d] = %d (position = %d)\n", i,
-			temp->value, temp->position);
-		temp = temp->next;
-		i++;
-	}
-	temp = stacks->stack_b;
-	i = 0;
-	ft_printf("=== STACK B ===\n");
-	while (temp)
-	{
-		ft_printf("stack_b[%d] = %d (position = %d)\n", i,
-			temp->value, temp->position);
-		temp = temp->next;
-		i++;
-	}
 }
 
 int	add_node_to_a(t_stacks *stacks, int value)

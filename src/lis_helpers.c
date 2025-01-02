@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 14:10:03 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 14:18:33 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:42:21 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_lengths_prev(int *lengths, int *prev, int total)
 	}
 }
 
-void	update_lis(int *arr, int *lengths, int *prev, int i)
+static void	update_lis(int *arr, int *lengths, int *prev, int i)
 {
 	int	j;
 
@@ -56,7 +56,7 @@ void	update_lis(int *arr, int *lengths, int *prev, int i)
 	}
 }
 
-int	find_lis_max(int *lengths, int total, int *max_pos)
+static int	find_lis_max(int *lengths, int total, int *max_pos)
 {
 	int	i;
 	int	max_len;

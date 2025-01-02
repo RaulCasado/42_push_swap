@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:19:56 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:51:01 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_count_words(char *ptr, char delimiter)
+static int	ft_count_words(char *ptr, char delimiter)
 {
 	int	total_words;
 	int	i;
@@ -33,7 +33,7 @@ int	ft_count_words(char *ptr, char delimiter)
 	return (total_words);
 }
 
-int	count_numbers_in_splited(char **splited, int splited_count)
+static int	count_numbers_in_splited(char **splited, int splited_count)
 {
 	int	total_numbers;
 	int	j;
@@ -80,7 +80,7 @@ int	count_total_numbers(char **argvs)
 	return (total_numbers);
 }
 
-int	process_splited_numbers(char **splited, int splited_count, int *stack,
+static int	process_splited_numbers(char **splited, int splited_count, int *stack,
 		int *z)
 {
 	int	l;

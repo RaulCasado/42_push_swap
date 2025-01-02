@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 11:32:08 by racasado          #+#    #+#             */
-/*   Updated: 2024/12/20 12:33:20 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:40:58 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_int_array(int *arr, int size)
+static void	ft_sort_int_array(int *arr, int size)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ void	ft_sort_int_array(int *arr, int size)
 	}
 }
 
-int	binary_search(int *arr, int size, int value)
+static int	binary_search(int *arr, int size, int value)
 {
 	int	left;
 	int	right;

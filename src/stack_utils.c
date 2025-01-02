@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:20:12 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:52:02 by raul             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(int *stack, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		ft_printf("stack[%d] = %d\n", i, stack[i]);
-		i++;
-	}
-}
 
 int	is_already_ordered(int *stack, int count)
 {
