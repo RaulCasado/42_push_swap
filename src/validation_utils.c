@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2025/01/07 19:05:40 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/07 20:18:32 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	validate_arguments(int argc, char **argvs)
 {
-	int i;
-	
+	int	i;
+
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -25,7 +25,7 @@ int	validate_arguments(int argc, char **argvs)
 	i = 1;
 	while (i < argc)
 	{
-		if (argvs[i][0] == '\0')
+		if (argvs[i][0] == '\0' || is_only_spaces(argvs[i]))
 		{
 			ft_putstr_fd("Error\n", 2);
 			return (0);

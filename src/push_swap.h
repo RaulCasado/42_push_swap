@@ -6,7 +6,7 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2025/01/07 19:05:31 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/07 20:17:41 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			*initialize_stack(int total_numbers);
 int			validate_arguments(int argc, char **argvs);
 int			is_number(char *str);
 int			is_int(char *str);
-
+int			is_only_spaces(char *str);
 /* Stack Parsing & Initialization */
 int			count_total_numbers(char **argvs);
 int			fill_stack(char **argvs, int *stack);
