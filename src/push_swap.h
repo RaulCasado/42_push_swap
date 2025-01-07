@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:06:00 by racasado          #+#    #+#             */
-/*   Updated: 2025/01/02 11:53:24 by raul             ###   ########.fr       */
+/*   Updated: 2025/01/07 19:05:31 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			is_alredy_in_stack(int *stack, int count, int num);
 int			*initialize_stack(int total_numbers);
 
 /* Argument Validation */
-int			validate_arguments(int argc);
+int			validate_arguments(int argc, char **argvs);
 int			is_number(char *str);
 int			is_int(char *str);
 

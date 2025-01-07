@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:17:06 by racasado          #+#    #+#             */
-/*   Updated: 2025/01/02 11:43:55 by raul             ###   ########.fr       */
+/*   Updated: 2025/01/07 19:05:26 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ static int	check_if_already_sorted(int *stack, int total_numbers)
 {
 	if (is_already_ordered(stack, total_numbers))
 	{
-		ft_putstr_fd("Error", 2);
 		free(stack);
-		return (0);
+		exit(0);
 	}
 	return (1);
 }
@@ -39,7 +38,7 @@ static int	populate_stack(int *stack, t_stacks *stacks, int total_numbers)
 
 static int	validate_and_initialize(int argc, char **argvs, t_data *data)
 {
-	if (!validate_arguments(argc))
+	if (!validate_arguments(argc, argvs))
 		return (1);
 	data->total_numbers = count_total_numbers(argvs);
 	if (data->total_numbers < 0)

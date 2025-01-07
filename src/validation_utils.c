@@ -6,18 +6,31 @@
 /*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2024/11/28 13:20:22 by racasado         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:05:40 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	validate_arguments(int argc)
+int	validate_arguments(int argc, char **argvs)
 {
+	int i;
+	
 	if (argc < 2)
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (0);
+	}
+	i = 1;
+	i = 1;
+	while (i < argc)
+	{
+		if (argvs[i][0] == '\0')
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (0);
+		}
+		i++;
 	}
 	return (1);
 }
@@ -55,6 +68,8 @@ int	is_number(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (!str[i])
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))

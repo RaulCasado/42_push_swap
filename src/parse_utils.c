@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: racasado <racasado@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:00:00 by racasado          #+#    #+#             */
-/*   Updated: 2025/01/02 11:51:01 by raul             ###   ########.fr       */
+/*   Updated: 2025/01/07 17:56:32 by racasado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	count_total_numbers(char **argvs)
 	return (total_numbers);
 }
 
-static int	process_splited_numbers(char **splited, int splited_count, int *stack,
-		int *z)
+static int	process_splited_numbers(char **splited, int splited_count,
+		int *stack, int *z)
 {
 	int	l;
 	int	num;
